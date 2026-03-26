@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import CeoImage from "../assets/IMG/RentalCeo.jpg";
+// import CeoImage from "../assets/IMG/RentalCeo.jpg";
 
 const About = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
@@ -128,16 +128,16 @@ const About = () => {
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                 <div className="flex-shrink-0">
                   <div className="w-40 h-40 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-medium text-center shadow-md">
-                    <img src={CeoImage} alt="" />
+                    {/* <img src={CeoImage} alt="" /> */}
                   </div>
                 </div>
                 <div className="space-y-3">
                   <p className="font-semibold text-base text-[#1A362B]">
-                    Scott Frazier
+                    Miguel Smith
                   </p>
                    
                   <p className="mb-3">
-                    Scott Frazier has extensive experience in construction management, equipment operations, and leadership. Passionate about reliable solutions, he founded Elliterentalhub to help businesses build better and safer.
+                    Miguel Smith has extensive experience in construction management, equipment operations, and leadership. Passionate about reliable solutions, he founded Elliterentalhub to help businesses build better and safer.
                   </p>
                   <blockquote className="italic text-sm border-l-4 border-[#1A362B] pl-4">
                     “We are committed to providing reliable machinery and excellent service to every client—because when our partners succeed, projects succeed.”

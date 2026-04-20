@@ -1,100 +1,224 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Mail, MapPin, Phone, Clock, ArrowRight, ExternalLink } from "lucide-react";
 
 const Contact = () => {
-  return (
-    <motion.section
-      id="contactus"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 1.2 }}
-      className="py-20 px-6 md:px-12 bg-white dark:bg-[#0f1f1a] text-[#1A362B] dark:text-white"
-    >
-      <div className="max-w-6xl mx-auto bg-white dark:bg-[#132821] rounded-3xl shadow-xl p-8 md:p-12">
+  const handleContactClick = (href) => {
+    if (href) {
+      window.location.href = href;
+    }
+  };
 
+  return (
+    <section
+      id="contactus"
+      className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 lg:px-20 bg-[#0a0612] relative overflow-hidden"
+      style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif' }}
+    >
+      {/* Background effects */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-violet-600/50 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+      <div className="absolute top-40 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-violet-600/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-40 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-cyan-400/10 rounded-full blur-3xl" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-10 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Get In Touch With Us
-          </h2>
-
-          <p className="text-gray-600 dark:text-gray-300">
-            Email Address:{" "}
-            <span className="font-semibold">
-              info@eliterentalhub.com
+          <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
+            <span className="w-8 sm:w-12 h-px bg-cyan-400" />
+            <span className="text-cyan-400 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase">
+              Get In Touch
             </span>
+            <span className="w-8 sm:w-12 h-px bg-cyan-400" />
+          </div>
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
+            Ready to Rent?{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">
+              Let's Talk
+            </span>
+          </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-4 sm:px-0">
+            Get a quote within 2 hours. Our team is standing by to match you with the right equipment.
           </p>
         </motion.div>
 
-        {/* Grid Layout */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-
-          {/* Left - Email */}
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-start">
+          {/* Left - Contact Info Cards */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="flex justify-center md:justify-start"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-3 sm:space-y-4"
           >
-            <div className="bg-gray-50 dark:bg-[#1b362d] border border-[#1A362B]/10 dark:border-white/10 rounded-2xl p-8 shadow-md w-full max-w-md">
-              <h3 className="text-xl font-semibold mb-4">
-                Reach Us by Email
-              </h3>
-
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Have questions about equipment availability, pricing, or rental terms?
-                Send us a message. we typically respond within 24 hours.
-              </p>
-
-              <a
-                href="mailto:info@eliterentalhub.com"
-                className="inline-flex items-center justify-center bg-[#1A362B] hover:bg-[#142a21] text-white px-6 py-3 rounded-xl transition duration-300 font-medium w-full"
+            {[
+              {
+                icon: Mail,
+                label: "Email Us",
+                value: "Support@dkadamsrentals.com",
+                subtext: "Quotes within 2 hours",
+                color: "cyan",
+                href: "mailto:Support@dkadamsrentals.com",
+              },
+              {
+                icon: Phone,
+                label: "Call Us",
+                value: "509 205 5516",
+                subtext: "24/7 emergency line",
+                color: "violet",
+                href: "tel:509 205 5516",
+              },
+              {
+                icon: MapPin,
+                label: "Visit Us",
+                value: "12212 Craven Ave",
+                subtext: "Cleveland, OH 44105",
+                color: "cyan",
+              },
+              {
+                icon: Clock,
+                label: "Hours",
+                value: "Mon-Sat: 6AM - 8PM",
+                subtext: "Sunday: Emergency only",
+                color: "violet",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                className={`group flex items-center gap-3 sm:gap-4 md:gap-5 p-4 sm:p-5 md:p-6 bg-[#1a1033]/50 border border-violet-500/20 rounded-xl hover:border-cyan-400/50 transition-all duration-500 ${item.href ? 'cursor-pointer' : ''}`}
+                onClick={() => handleContactClick(item.href)}
               >
-                Send Email
-              </a>
-            </div>
+                <div className={`flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg flex items-center justify-center border transition-colors duration-300 ${
+                  item.color === "cyan" 
+                    ? "bg-cyan-400/10 border-cyan-400/30 group-hover:bg-cyan-400/20" 
+                    : "bg-violet-600/10 border-violet-500/30 group-hover:bg-violet-600/20"
+                }`}>
+                  <item.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.color === "cyan" ? "text-cyan-400" : "text-violet-400"}`} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider block mb-0.5 sm:mb-1">
+                    {item.label}
+                  </span>
+                  <span className="text-white font-bold text-sm sm:text-base md:text-lg block truncate">
+                    {item.value}
+                  </span>
+                  <span className="text-slate-500 text-xs sm:text-sm">
+                    {item.subtext}
+                  </span>
+                </div>
+                {item.href && (
+                  <div className="hidden sm:flex flex-shrink-0 w-9 h-9 md:w-10 md:h-10 rounded-full border border-violet-500/30 items-center justify-center group-hover:border-cyan-400 group-hover:bg-cyan-400/10 transition-all duration-300">
+                    <ExternalLink className="w-4 h-4 text-violet-400 group-hover:text-cyan-400" />
+                  </div>
+                )}
+              </motion.div>
+            ))}
           </motion.div>
 
-          {/* Right - Map */}
+          {/* Right - Email CTA Card */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="w-full"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="lg:sticky lg:top-8"
           >
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-white/10">
+            <div className="relative bg-[#1a1033]/80 border border-violet-500/20 rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 overflow-hidden text-center">
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-600 to-cyan-400" />
+              
+              {/* Decorative glow */}
+              <div className="absolute -top-20 -right-20 w-32 h-32 sm:w-40 sm:h-40 bg-violet-600/20 rounded-full blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 w-32 h-32 sm:w-40 sm:h-40 bg-cyan-400/20 rounded-full blur-3xl" />
 
-              {/* Responsive Map */}
-              <div className="w-full aspect-[4/3]">
-                <iframe
-                  src="https://www.google.com/maps?q=138+E+50th+St+%23Tr61,+New+York,+NY+10022&output=embed"
-                  className="w-full h-full"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Eliterentalhub Location - 138 E 50th St #Tr61, New York, NY 10022"
-                />
+              <div className="relative z-10">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-2xl bg-gradient-to-br from-violet-600/30 to-cyan-400/30 border border-violet-500/30 flex items-center justify-center">
+                  <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-cyan-400" />
+                </div>
+
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
+                  Send Us an Email
+                </h3>
+                
+                <p className="text-slate-400 text-sm sm:text-base mb-6 sm:mb-8 max-w-md mx-auto leading-relaxed">
+                  Have questions about equipment availability, pricing, or rental terms? 
+                  Click below to send us a message. We typically respond within 24 hours.
+                </p>
+
+                <motion.a
+                  href="mailto:rentals@dkadams.com"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-gradient-to-r from-violet-600 to-cyan-400 text-slate-900 font-bold text-sm sm:text-base md:text-lg uppercase tracking-wider rounded-lg hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 w-full sm:w-auto justify-center"
+                >
+                  Send Mail
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform" />
+                </motion.a>
+
+                <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-violet-500/20">
+                  <p className="text-slate-500 text-xs sm:text-sm">
+                    Or reach us directly at{" "}
+                    <span className="text-cyan-400 font-semibold">Support@dkadamsrentals.com</span>
+                  </p>
+                </div>
               </div>
             </div>
-
-            {/* Location Text */}
-            <p className="mt-6 text-center text-gray-700 dark:text-gray-300 text-base font-medium">
-              138 E 50th St #Tr61, New York, NY 10022
-            </p>
           </motion.div>
         </div>
+
+        {/* Map Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-10 sm:mt-12 md:mt-16"
+        >
+          <div className="relative rounded-2xl overflow-hidden border border-violet-500/20">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0612] via-transparent to-transparent z-10 pointer-events-none" />
+            
+            <div className="w-full aspect-[16/9] md:aspect-[21/9]">
+              <iframe
+                src="https://www.google.com/maps?q=12212+Craven+Ave,Cleveland,OH+44105&output=embed"
+                className="w-full h-full grayscale contrast-125"
+                style={{ border: 0, filter: "grayscale(100%) invert(92%) contrast(1.2)" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="DKAdams Rentals Location - 12212 Craven Ave, Cleveland, OH 44105"
+              />
+            </div>
+
+            {/* Location card overlay - TEXT ONLY */}
+            <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-20 bg-[#1a1033]/90 backdrop-blur-md border border-violet-500/30 rounded-xl p-3 sm:p-4 max-w-[200px] sm:max-w-xs">
+              <div className="flex items-start gap-2 sm:gap-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-xs sm:text-sm mb-0.5 sm:mb-1">DKAdams Rentals</h4>
+                  <p className="text-slate-400 text-xs leading-relaxed">
+                    12212 Craven Ave<br />
+                    Cleveland, OH 44105
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

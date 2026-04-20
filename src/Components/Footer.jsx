@@ -1,107 +1,149 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <motion.footer
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 1.4 }}
-      className="py-12 px-6 md:px-12 bg-[#1B2431] text-white"
+    <footer
+      className="relative bg-[#0a0612] border-t border-violet-500/20"
+      style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif' }}
     >
-      <div className="container mx-auto">
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Company Info – slides up first */}
+      {/* Top accent line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+
+      {/* Main Footer */}
+      <div className="py-16 px-6 md:px-12 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+            
+            {/* Brand Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-2xl font-bold text-white mb-4">
+                DKAdams{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">
+                  Rentals
+                </span>
+              </h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                Your trusted partner for reliable construction equipment rental. 
+                500+ machines, 24/7 support, same-day delivery.
+              </p>
+              
+              {/* Contact mini */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-slate-400 text-sm">
+                  <Mail className="w-4 h-4 text-cyan-400" />
+                  <span>Support@dkadamsrentals.com</span>
+                </div>
+                <div className="flex items-center gap-3 text-slate-400 text-sm">
+                  <Phone className="w-4 h-4 text-violet-400" />
+                  <span>509 205 5516</span>
+                </div>
+                <div className="flex items-center gap-3 text-slate-400 text-sm">
+                  <MapPin className="w-4 h-4 text-cyan-400" />
+                  <span>12212 Craven Ave, Cleveland, OH</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Quick Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">
+                Quick Links
+              </h4>
+              <ul className="space-y-3">
+                {[
+                  { label: "About Us", href: "#aboutus" },
+                  { label: "Our Fleet", href: "#machinery" },
+                  { label: "Services", href: "#ourservices" },
+                  { label: "Gallery", href: "#gallery" },
+                  { label: "Contact", href: "#contactus" },
+                ].map((link, i) => (
+                  <li key={i}>
+                    <a
+                      href={link.href}
+                      className="text-slate-400 hover:text-cyan-400 transition-colors duration-300 text-sm flex items-center gap-2 group"
+                    >
+                      <span className="w-0 group-hover:w-2 h-px bg-cyan-400 transition-all duration-300" />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Equipment Categories */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">
+                Equipment
+              </h4>
+              <ul className="space-y-3">
+                {[
+                  "Construction",
+                  "Industrial",
+                  "Agricultural",
+                  "Excavators",
+                  "Loaders & Dozers",
+                ].map((item, i) => (
+                  <li key={i}>
+                    <a
+                      href="#machinery"
+                      className="text-slate-400 hover:text-violet-400 transition-colors duration-300 text-sm flex items-center gap-2 group"
+                    >
+                      <span className="w-0 group-hover:w-2 h-px bg-violet-400 transition-all duration-300" />
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Bottom Bar */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="pt-8 border-t border-violet-500/20 flex flex-col md:flex-row justify-between items-center gap-4"
           >
-            <h3 
-              style={{ fontFamily: '"M PLUS 1", sans-serif' }}
-              className="text-xl font-bold mb-2">Eliterentalhub</h3>
-            <p style={{ fontFamily: '"M PLUS 1", sans-serif' }}
-              className="text-sm text-gray-300">
-              Your Trusted Partner for Reliable Construction Equipment Rental
+            <p className="text-slate-500 text-sm">
+              © {new Date().getFullYear()} DKAdams Rentals. All rights reserved.
             </p>
-          </motion.div>
-
-          {/* Navigation Links – slides up with delay */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-          >
-            <ul 
-              style={{ fontFamily: '"M PLUS 1", sans-serif' }}
-              className="space-y-2 text-sm text-gray-300">
-              <li>
-                <a
-                  href="#aboutus"
-                  className="hover:text-[#94BD0A] transition-colors"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#ourservices"
-                  className="hover:text-[#94BD0A] transition-colors"
-                >
-                  Rental Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#machinery"
-                  className="hover:text-[#94BD0A] transition-colors"
-                >
-                  Our Fleet Gallery
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contactus"
-                  className="hover:text-[#94BD0A] transition-colors"
-                >
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Social Media – slides up last */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.6, ease: "easeOut" }}
-          >
-            <h4 className="font-semibold mb-4 text-sm text-gray-300">Follow Us</h4>
-            <div className="flex gap-4 text-sm text-gray-300">
-              <a href="https://www.instagram.com/eliterentalhub?igsh=MXMxM3Noa2o1dmJyaQ==" className="hover:text-[#94BD0A] transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
+            
+            <div className="flex items-center gap-6">
+             
+              {/* Back to top */}
+              <button
+                onClick={scrollToTop}
+                className="w-10 h-10 rounded-full border border-violet-500/30 flex items-center justify-center hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 group"
+              >
+                <ArrowUp className="w-5 h-5 text-slate-400 group-hover:text-cyan-400" />
+              </button>
             </div>
           </motion.div>
         </div>
-
-        {/* Divider and Copyright – fades in last */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.3, delay: 0.8, ease: "easeOut" }}
-          className="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400"
-        >
-          © {new Date().getFullYear()} Eliterentalhub – Construction Equipment Rental. All rights reserved.
-        </motion.div>
       </div>
-    </motion.footer>
+    </footer>
   );
 };
 

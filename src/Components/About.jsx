@@ -1,175 +1,204 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-// import CeoImage from "../assets/IMG/RentalCeo.jpg";
+import { motion, AnimatePresence } from "framer-motion";
+import DKadams from "../assets/IMG/DKadams_Ceo.jpg";
 
 const About = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
-  const handleContactClick = () => {
-    document.getElementById("contactus")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
   return (
     <section
       id="aboutus"
-      className="py-16 px-4 sm:px-6 md:px-12 lg:px-24 bg-background"
+      className="py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-[#0f0a1a]"
+      style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif' }}
     >
-      <div className="container mx-auto max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5 }}
-          className="space-y-8"
-        >
-          <motion.p
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.4, delay: 0.3, ease: "easeOut" }}
-            style={{ fontFamily: '"Poppins", sans-serif' }}
-            className="text-muted-foreground text-xs sm:text-sm uppercase mb-2 text-center md:text-left"
-          >
-            Who we are
-          </motion.p>
-
-          <motion.h2
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.6, delay: 0.5, ease: "easeOut" }}
-            style={{ fontFamily: '"M PLUS 1", sans-serif' }}
-            className="text-3xl sm:text-4xl font-bold mb-6 text-[#1A362B] text-center md:text-left"
-          >
-            About Our Company
-          </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.8, delay: 0.7 }}
-            style={{ fontFamily: '"Inter", sans-serif' }}
-            className="text-muted-foreground text-sm sm:text-base space-y-6"
-          >
-            {/* Short Overview */}
-            <motion.p
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.4, delay: 0.9, ease: "easeOut" }}
-            >
-              Eliterentalhub provides reliable, high-quality construction machinery rental services. Our well-maintained fleet supports construction, infrastructure, industrial, and agricultural projects, helping clients complete work on time and on budget.
-            </motion.p>
-
-            {/* Mission & Vision */}
-            <motion.p
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.4, delay: 1.1, ease: "easeOut" }}
-            >
-              <strong>Our Mission:</strong> Deliver dependable equipment and exceptional service so every project succeeds safely and efficiently.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.4, delay: 1.2, ease: "easeOut" }}
-            >
-              <strong>Our Vision:</strong> Become the trusted leader in machinery rental through innovation and reliability.
-            </motion.p>
-
-            {/* Collapsible Details */}
-            <motion.button
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.4, delay: 1.3, ease: "easeOut" }}
-              onClick={() => setIsDetailsOpen(!isDetailsOpen)}
-              className="text-[#1A362B] font-medium flex items-center mb-4 hover:underline"
-            >
-              {isDetailsOpen ? "Hide" : "Show"} more details
-              <span className="ml-2">{isDetailsOpen ? "▲" : "▼"}</span>
-            </motion.button>
-
-            {isDetailsOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="mb-8 space-y-4 overflow-hidden"
-              >
-                <div>
-                  <h4 className="font-semibold text-[#1A362B] mb-1">
-                    Experience & Commitment
-                  </h4>
-                  <p>
-                    With over 8 years in the industry, we maintain a diverse fleet with strict safety protocols, regular servicing, operator support, fast delivery, 24/7 assistance, and transparent pricing.
-                  </p>
-                </div>
-              </motion.div>
-            )}
-
-            {/* CEO Profile */}
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          
+          <div className="order-2 lg:order-1">
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.6, delay: 1.5, ease: "easeOut" }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-3 mb-6"
             >
-              <h3 className="text-lg font-semibold text-[#1A362B] mt-8 mb-4">
-                Meet Our CEO
-              </h3>
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                <div className="flex-shrink-0">
-                  <div className="w-40 h-40 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-medium text-center shadow-md">
-                    {/* <img src={CeoImage} alt="" /> */}
+              <span className="w-12 h-px bg-cyan-400" />
+              <span className="text-cyan-400 text-xl font-semibold  ">
+                About DKAdams
+              </span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+            >
+              Equipment That Works
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">
+                As Hard As You Do
+              </span>
+            </motion.h2>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-4 text-slate-300 leading-relaxed mb-8"
+            >
+              <p>
+                DKAdams Rentals provides reliable, high-quality construction machinery 
+                for contractors who can't afford downtime. Every machine in our fleet is 
+                battle-tested, meticulously maintained, and ready to perform from hour one.
+              </p>
+              <p>
+                From excavators to aerial lifts, we deliver the right equipment when you 
+                need it — with flexible terms that keep your cash flow moving and your 
+                projects on track.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <button
+                onClick={() => setIsDetailsOpen(!isDetailsOpen)}
+                className="group flex items-center gap-2 text-white font-semibold hover:text-cyan-400 transition-colors duration-300 mb-6"
+              >
+                <span>{isDetailsOpen ? "Less" : "More"} About Our Fleet</span>
+                <motion.span
+                  animate={{ rotate: isDetailsOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </motion.span>
+              </button>
+
+              <AnimatePresence>
+                {isDetailsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-6 space-y-4 text-slate-300">
+                      <p>
+                        <strong className="text-white">Rigorous Maintenance:</strong> Every unit undergoes 
+                        150-point inspection before and after each rental. Zero exceptions.
+                      </p>
+                      <p>
+                        <strong className="text-white">Rapid Response:</strong> Breakdown? We'll swap 
+                        your machine within 4 hours or your rental is free.
+                      </p>
+                      <p>
+                        <strong className="text-white">Transparent Pricing:</strong> No fuel surcharges, 
+                        no hidden fees. What we quote is what you pay.
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="grid grid-cols-3 gap-6 border-t border-violet-500/20 pt-8 mb-8"
+            >
+              {[
+                { value: "500+", label: "Machines" },
+                { value: "4hr", label: "Swap Guarantee" },
+                { value: "0", label: "Hidden Fees" },
+              ].map((stat, i) => (
+                <div key={i} className="text-center md:text-left">
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-violet-300 uppercase tracking-wider">
+                    {stat.label}
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <p className="font-semibold text-base text-[#1A362B]">
-                    Miguel Smith
-                  </p>
-                   
-                  <p className="mb-3">
-                    Miguel Smith has extensive experience in construction management, equipment operations, and leadership. Passionate about reliable solutions, he founded Elliterentalhub to help businesses build better and safer.
-                  </p>
-                  <blockquote className="italic text-sm border-l-4 border-[#1A362B] pl-4">
-                    “We are committed to providing reliable machinery and excellent service to every client—because when our partners succeed, projects succeed.”
-                  </blockquote>
-                </div>
-              </div>
+              ))}
             </motion.div>
-          </motion.div>
 
-          {/* Button – now scrolls to #contactus */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.3, delay: 1.5, ease: "easeOut" }}
-            className="mt-8 text-center md:text-left"
-          >
-            <button
-              type="button"
-              onClick={() => {
-                document.getElementById("contactus")?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                });
-              }}
-              className="h-11 px-8 rounded-md border border-white text-white font-medium bg-[#1B2431] hover:bg-white hover:text-[#1B2431] transition-all duration-300 cursor-pointer"
-              style={{ fontFamily: '"M PLUS 1", sans-serif' }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Get to Know Us Better
-            </button>
+              <motion.a
+                href="#machinery"
+                whileHover={{ scale: 1.02, x: 5 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-violet-600 text-white font-bold text-sm tracking-wider uppercase rounded-sm hover:bg-cyan-400 hover:text-slate-900 transition-colors duration-300"
+              >
+                Browse Fleet
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </motion.a>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="order-1 lg:order-2"
+          >
+            <div className="relative">
+              <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-violet-500/30 rounded-tr-3xl" />
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-cyan-400/30 rounded-bl-3xl" />
+              
+              <div className="bg-[#1a1033] rounded-lg shadow-2xl p-8 md:p-10 relative overflow-hidden border border-violet-500/10">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-600 to-cyan-400" />
+                
+                <div className="flex flex-col sm:flex-row gap-6 mb-6">
+                  <div className="flex-shrink-0 mx-auto sm:mx-0">
+                    <div className="w-32 h-32 md:w-40 md:h-40 bg-[#0f0a1a] rounded-lg flex items-center justify-center text-violet-300 text-sm font-medium text-center border-2 border-dashed border-violet-500/30">
+                      { <img src={DKadams} alt="CEO" className="w-full h-full object-cover rounded-lg" /> }
+                       
+                    </div>
+                  </div>
+                  <div className="flex-1 text-center sm:text-left">
+                    <h3 className="text-xl font-bold text-white mb-1">
+                       Tony Adams
+                    </h3>
+                    <p className="text-cyan-400 font-medium text-sm  tracking-wider mb-3">
+                      Founder & CEO, DKAdams Rentals
+                    </p>
+                    <p className="text-slate-300 text-sm leading-relaxed">
+                      Former site supervisor who got tired of unreliable rentals. 
+                      Built DKAdams to solve the problem he faced daily.
+                    </p>
+                  </div>
+                </div>
+
+                <blockquote className="relative pl-6 border-l-2 border-cyan-400">
+                  <p className="text-slate-300 italic text-sm leading-relaxed">
+                    "We don't just rent machines. We rent reliability. When your excavator 
+                    shows up clean, fueled, and ready at 6 AM, that's when you know 
+                    you've got a partner, not just a vendor."
+                  </p>
+                </blockquote>
+              </div>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

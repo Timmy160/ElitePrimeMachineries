@@ -40,12 +40,12 @@ const Services = () => {
   return (
     <section
       id="ourservices"
-      className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 lg:px-20 bg-[#0a0612] relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 lg:px-20 bg-white relative overflow-hidden"
       style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif' }}
     >
-      {/* Background elements */}
-      <div className="hidden sm:block absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-violet-600/5 to-transparent" />
-      <div className="hidden sm:block absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-cyan-400/5 rounded-full blur-3xl" />
+      {/* Background elements - subtle for white */}
+      <div className="hidden sm:block absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-violet-100 to-transparent" />
+      <div className="hidden sm:block absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-cyan-100/30 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
@@ -58,7 +58,7 @@ const Services = () => {
             className="flex items-center justify-center gap-3 md:gap-4 mb-4 md:mb-6"
           >
             <span className="w-8 md:w-12 h-px bg-gradient-to-r from-transparent to-violet-500" />
-            <span className="text-cyan-400 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase">
+            <span className="text-cyan-600 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase">
               Our Fleet
             </span>
             <span className="w-8 md:w-12 h-px bg-gradient-to-l from-transparent to-violet-500" />
@@ -69,10 +69,10 @@ const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900"
           >
             Equipment for{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-500">
               Every Project
             </span>
           </motion.h2>
@@ -89,9 +89,9 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="lg:sticky lg:top-24"
           >
-            <div className="relative rounded-xl md:rounded-2xl overflow-hidden border border-violet-500/20">
+            <div className="relative rounded-xl md:rounded-2xl overflow-hidden border border-violet-200 shadow-lg">
               {/* Image with AnimatePresence for smooth transitions */}
-              <div className="aspect-[4/3] bg-[#1a1033] relative overflow-hidden">
+              <div className="aspect-[4/3] bg-slate-100 relative overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.img 
                     key={activeService}
@@ -106,7 +106,7 @@ const Services = () => {
                 </AnimatePresence>
                 
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0612] via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent z-10" />
                 
                 {/* Active service info */}
                 <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6 z-20">
@@ -144,9 +144,9 @@ const Services = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.3, delay: i * 0.1 }}
-                    className="bg-[#1a1033]/50 border border-violet-500/20 rounded-lg p-2 md:p-3 text-center"
+                    className="bg-slate-50 border border-violet-200 rounded-lg p-2 md:p-3 text-center"
                   >
-                    <span className="text-[10px] md:text-xs text-slate-400 block leading-tight">{spec}</span>
+                    <span className="text-[10px] md:text-xs text-slate-500 block leading-tight">{spec}</span>
                   </motion.div>
                 ))}
               </AnimatePresence>
@@ -165,8 +165,8 @@ const Services = () => {
                 onClick={() => setActiveService(index)}
                 className={`group cursor-pointer relative overflow-hidden rounded-xl border transition-all duration-500 ${
                   activeService === index 
-                    ? "border-cyan-400/50 bg-gradient-to-r from-violet-600/20 to-[#1a1033]" 
-                    : "border-violet-500/20 bg-[#1a1033]/30 hover:border-violet-500/40"
+                    ? "border-cyan-400/50 bg-gradient-to-r from-violet-50 to-white shadow-md" 
+                    : "border-violet-200 bg-white hover:border-violet-300 hover:shadow-sm"
                 }`}
               >
                 <div className="p-4 md:p-6 lg:p-8">
@@ -174,12 +174,12 @@ const Services = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
                         <span className={`text-xs md:text-sm font-bold transition-colors duration-300 flex-shrink-0 ${
-                          activeService === index ? "text-cyan-400" : "text-violet-400"
+                          activeService === index ? "text-cyan-600" : "text-violet-600"
                         }`}>
                           0{index + 1}
                         </span>
                         <h3 className={`text-base md:text-xl font-bold transition-colors duration-300 truncate ${
-                          activeService === index ? "text-white" : "text-slate-300 group-hover:text-white"
+                          activeService === index ? "text-slate-900" : "text-slate-600 group-hover:text-slate-900"
                         }`}>
                           {service.title}
                         </h3>
@@ -193,14 +193,14 @@ const Services = () => {
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
                           >
-                            <p className="text-slate-400 text-sm leading-relaxed mb-3 md:mb-4">
+                            <p className="text-slate-500 text-sm leading-relaxed mb-3 md:mb-4">
                               {service.description}
                             </p>
                             <div className="flex flex-wrap gap-1.5 md:gap-2">
                               {service.specs.map((spec, i) => (
                                 <span 
                                   key={i}
-                                  className="px-2 md:px-3 py-1 bg-violet-600/20 border border-violet-500/30 rounded-full text-[10px] md:text-xs text-cyan-400"
+                                  className="px-2 md:px-3 py-1 bg-violet-100 border border-violet-200 rounded-full text-[10px] md:text-xs text-cyan-700"
                                 >
                                   {spec}
                                 </span>
@@ -214,8 +214,8 @@ const Services = () => {
                     {/* Arrow indicator */}
                     <div className={`flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
                       activeService === index 
-                        ? "border-cyan-400 bg-cyan-400 text-slate-900 rotate-90" 
-                        : "border-violet-500/30 text-violet-400 group-hover:border-cyan-400 group-hover:text-cyan-400"
+                        ? "border-cyan-500 bg-cyan-500 text-white rotate-90" 
+                        : "border-violet-300 text-violet-500 group-hover:border-cyan-500 group-hover:text-cyan-600"
                     }`}>
                       <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -227,7 +227,7 @@ const Services = () => {
                 {/* Progress bar for active */}
                 {activeService === index && (
                   <motion.div 
-                    className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-violet-600 to-cyan-400"
+                    className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-violet-600 to-cyan-500"
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 5, ease: "linear" }}
@@ -249,7 +249,7 @@ const Services = () => {
                 href="#machinery"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group flex items-center justify-center gap-2 md:gap-3 w-full py-3 md:py-4 bg-gradient-to-r from-violet-600 to-cyan-400 text-slate-900 font-bold text-sm md:text-lg uppercase tracking-wider rounded-xl hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300"
+                className="group flex items-center justify-center gap-2 md:gap-3 w-full py-3 md:py-4 bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-bold text-sm md:text-lg uppercase tracking-wider rounded-xl hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
               >
                 View Full Fleet
                 <svg className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

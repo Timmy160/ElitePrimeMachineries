@@ -284,15 +284,15 @@ function MachineryListings() {
   return (
     <section
       id="machinery"
-      className="py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-[#0f0a1a] min-h-screen"
+      className="py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-white min-h-screen"
       style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif' }}
     >
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-12">
         <div className="flex gap-8 mb-8">
           <div className="hidden md:flex flex-col items-center gap-4">
-            <div className="w-px h-20 bg-gradient-to-b from-cyan-400 to-violet-600" />
-            <div className="w-2 h-2 rounded-full bg-cyan-400" />
+            <div className="w-px h-20 bg-gradient-to-b from-cyan-500 to-violet-600" />
+            <div className="w-2 h-2 rounded-full bg-cyan-500" />
           </div>
           
           <div className="flex-1">
@@ -303,7 +303,7 @@ function MachineryListings() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-4"
             >
-              <span className="text-cyan-400 text-sm font-semibold tracking-[0.2em] uppercase">
+              <span className="text-cyan-600 text-sm font-semibold tracking-[0.2em] uppercase">
                 Our Fleet
               </span>
             </motion.div>
@@ -313,10 +313,10 @@ function MachineryListings() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white max-w-2xl leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 max-w-2xl leading-tight"
             >
               Available{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-500">
                 Machinery
               </span>{" "}
               for Rent
@@ -327,14 +327,14 @@ function MachineryListings() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-4 text-slate-400 max-w-xl text-lg"
+              className="mt-4 text-slate-500 max-w-xl text-lg"
             >
               Browse our wide range of well-maintained equipment. Click any machine for full specifications.
             </motion.p>
           </div>
         </div>
 
-        {/* Category Tabs - NO COUNT BADGES */}
+        {/* Category Tabs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -348,12 +348,12 @@ function MachineryListings() {
               onClick={() => setActiveCategory(category)}
               className={`group relative px-8 py-4 rounded-xl border transition-all duration-500 ${
                 activeCategory === category
-                  ? "border-cyan-400 bg-gradient-to-r from-violet-600/20 to-cyan-400/10"
-                  : "border-violet-500/20 bg-[#1a1033]/50 hover:border-violet-500/40"
+                  ? "border-cyan-400 bg-gradient-to-r from-violet-50 to-cyan-50 shadow-md"
+                  : "border-violet-200 bg-white hover:border-violet-300 hover:shadow-sm"
               }`}
             >
               <span className={`text-lg font-bold transition-colors duration-300 ${
-                activeCategory === category ? "text-white" : "text-slate-400 group-hover:text-white"
+                activeCategory === category ? "text-slate-900" : "text-slate-500 group-hover:text-slate-900"
               }`}>
                 {category}
               </span>
@@ -362,7 +362,7 @@ function MachineryListings() {
               {activeCategory === category && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-violet-600 to-cyan-400"
+                  className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-violet-600 to-cyan-500"
                 />
               )}
             </button>
@@ -389,12 +389,12 @@ function MachineryListings() {
                 onMouseEnter={() => setHoveredCard(machine.id)}
                 onMouseLeave={() => setHoveredCard(null)}
                 onClick={() => openModal(machine)}
-                className={`group cursor-pointer relative overflow-hidden rounded-2xl border border-violet-500/20 hover:border-cyan-400/50 transition-all duration-500 ${
+                className={`group cursor-pointer relative overflow-hidden rounded-2xl border border-violet-200 hover:border-cyan-400/50 transition-all duration-500 shadow-sm hover:shadow-lg ${
                   isLarge ? "md:col-span-2 lg:col-span-2" : ""
                 }`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1a1033] to-[#0f0a1a]" />
-                <div className="absolute inset-0 bg-gradient-to-br from-violet-600/0 to-cyan-400/0 group-hover:from-violet-600/10 group-hover:to-cyan-400/10 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white" />
+                <div className="absolute inset-0 bg-gradient-to-br from-violet-100/0 to-cyan-100/0 group-hover:from-violet-100/50 group-hover:to-cyan-100/50 transition-all duration-500" />
 
                 {/* Image Container */}
                 <div className={`relative overflow-hidden ${isLarge ? "h-64" : "h-48"}`}>
@@ -403,11 +403,11 @@ function MachineryListings() {
                     alt={machine.name}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f0a1a] via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60" />
                   
                   {/* Price badge */}
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-slate-900/80 backdrop-blur-sm border border-cyan-400/30 rounded-full">
-                    <span className="text-cyan-400 font-bold text-sm">{machine.price}</span>
+                  <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm border border-cyan-200 rounded-full shadow-sm">
+                    <span className="text-cyan-700 font-bold text-sm">{machine.price}</span>
                   </div>
 
                   {/* Hover overlay */}
@@ -417,9 +417,9 @@ function MachineryListings() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-violet-600/20 backdrop-blur-sm flex items-center justify-center"
+                        className="absolute inset-0 bg-violet-600/10 backdrop-blur-sm flex items-center justify-center"
                       >
-                        <span className="px-6 py-3 bg-cyan-400 text-slate-900 font-bold uppercase tracking-wider rounded-lg flex items-center gap-2">
+                        <span className="px-6 py-3 bg-cyan-600 text-white font-bold uppercase tracking-wider rounded-lg flex items-center gap-2 shadow-lg">
                           View Details
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -432,30 +432,30 @@ function MachineryListings() {
 
                 {/* Content */}
                 <div className="relative z-10 p-6">
-                  <h3 className={`font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300 ${isLarge ? "text-xl" : "text-lg"}`}>
+                  <h3 className={`font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors duration-300 ${isLarge ? "text-xl" : "text-lg"}`}>
                     {machine.name}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed line-clamp-2">
+                  <p className="text-slate-500 text-sm leading-relaxed line-clamp-2">
                     {machine.description}
                   </p>
                   
                   <div className="mt-4 flex flex-wrap gap-2">
                     {machine.details.split("•").slice(0, 2).map((spec, i) => (
-                      <span key={i} className="px-2 py-1 bg-violet-500/10 border border-violet-500/20 rounded text-xs text-violet-300">
+                      <span key={i} className="px-2 py-1 bg-violet-50 border border-violet-200 rounded text-xs text-violet-700">
                         {spec.trim()}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-violet-600 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-violet-600 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </motion.div>
             );
           })}
         </motion.div>
       </div>
 
-      {/* Modal - CLEAR FULL-SIZE IMAGE */}
+      {/* Modal */}
       <AnimatePresence>
         {selectedMachine && (
           <motion.div
@@ -463,7 +463,7 @@ function MachineryListings() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-slate-950/95 backdrop-blur-md flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-slate-900/80 backdrop-blur-md flex items-center justify-center z-50 p-4"
             onClick={closeModal}
           >
             <motion.div
@@ -472,15 +472,15 @@ function MachineryListings() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-gradient-to-br from-[#1a1033] to-[#0f0a1a] border border-violet-500/30 rounded-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto relative"
+              className="bg-white border border-violet-200 rounded-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto relative shadow-2xl"
             >
               {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-600 to-cyan-400 z-10" />
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-600 to-cyan-500 z-10" />
               
               {/* Close button */}
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 w-10 h-10 bg-slate-900/80 border border-violet-500/30 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:border-cyan-400 transition-all duration-300 z-10"
+                className="absolute top-4 right-4 w-10 h-10 bg-white/90 border border-violet-200 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-cyan-500 transition-all duration-300 z-10 shadow-sm"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -488,39 +488,39 @@ function MachineryListings() {
               </button>
 
               <div className="p-0">
-                {/* FULL-SIZE IMAGE - No cropping, natural aspect ratio */}
-                <div className="relative w-full bg-[#0a0612] flex items-center justify-center p-4 md:p-8">
+                {/* FULL-SIZE IMAGE */}
+                <div className="relative w-full bg-slate-100 flex items-center justify-center p-4 md:p-8">
                   <img
                     src={selectedMachine.image}
                     alt={selectedMachine.name}
-                    className="max-w-full max-h-[60vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+                    className="max-w-full max-h-[60vh] w-auto h-auto object-contain rounded-lg shadow-xl"
                   />
                   
                   {/* Price tag overlay */}
-                  <div className="absolute bottom-6 right-6 px-4 py-2 bg-cyan-400 text-slate-900 font-bold text-lg rounded-lg shadow-lg">
+                  <div className="absolute bottom-6 right-6 px-4 py-2 bg-cyan-600 text-white font-bold text-lg rounded-lg shadow-lg">
                     {selectedMachine.price}
                   </div>
                 </div>
 
                 <div className="p-8">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
                     {selectedMachine.name}
                   </h3>
 
-                  <p className="text-slate-400 text-lg leading-relaxed mb-6">
+                  <p className="text-slate-600 text-lg leading-relaxed mb-6">
                     {selectedMachine.description}
                   </p>
 
                   {/* Specs grid */}
                   <div className="mb-8">
-                    <h4 className="text-cyan-400 font-semibold uppercase tracking-wider text-sm mb-4">
+                    <h4 className="text-cyan-600 font-semibold uppercase tracking-wider text-sm mb-4">
                       Technical Specifications
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {selectedMachine.details.split("•").filter(s => s.trim()).map((spec, i) => (
-                        <div key={i} className="flex items-start gap-3 p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg">
-                          <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0" />
-                          <span className="text-slate-300 text-sm">{spec.trim()}</span>
+                        <div key={i} className="flex items-start gap-3 p-3 bg-violet-50 border border-violet-200 rounded-lg">
+                          <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2 flex-shrink-0" />
+                          <span className="text-slate-700 text-sm">{spec.trim()}</span>
                         </div>
                       ))}
                     </div>
@@ -535,13 +535,13 @@ function MachineryListings() {
                         closeModal();
                         document.getElementById("contactus")?.scrollIntoView({ behavior: "smooth" });
                       }}
-                      className="flex-1 py-4 bg-gradient-to-r from-violet-600 to-cyan-400 text-slate-900 font-bold uppercase tracking-wider rounded-lg hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300"
+                      className="flex-1 py-4 bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-bold uppercase tracking-wider rounded-lg hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
                     >
                       Rent This Machine
                     </motion.button>
                     <button
                       onClick={closeModal}
-                      className="flex-1 py-4 border border-violet-500/30 text-slate-300 font-semibold rounded-lg hover:border-cyan-400 hover:text-white transition-all duration-300"
+                      className="flex-1 py-4 border border-violet-200 text-slate-600 font-semibold rounded-lg hover:border-cyan-500 hover:text-slate-900 transition-all duration-300"
                     >
                       Continue Browsing
                     </button>

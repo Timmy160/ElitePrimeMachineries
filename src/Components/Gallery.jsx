@@ -34,7 +34,7 @@ const Gallery = () => {
   return (
     <section
       id="gallery"
-      className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-[#0f0a1a] overflow-hidden"
+      className="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-white overflow-hidden"
       style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif' }}
     >
       <div className="max-w-7xl mx-auto">
@@ -47,14 +47,14 @@ const Gallery = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-12 h-px bg-cyan-400" />
-              <span className="text-cyan-400 text-sm font-semibold tracking-[0.2em] uppercase">
+              <span className="w-12 h-px bg-cyan-500" />
+              <span className="text-cyan-600 text-sm font-semibold tracking-[0.2em] uppercase">
                 Equipment Showcase
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
               Gallery of{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-500">
                 Available Machines
               </span>
             </h2>
@@ -70,17 +70,17 @@ const Gallery = () => {
           >
             <button
               onClick={() => scroll("left")}
-              className="group w-12 h-12 rounded-full border border-violet-500/30 flex items-center justify-center hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300"
+              className="group w-12 h-12 rounded-full border border-violet-200 flex items-center justify-center hover:border-cyan-500 hover:bg-cyan-50 transition-all duration-300"
               aria-label="Previous"
             >
-              <ChevronLeft className="w-5 h-5 text-violet-400 group-hover:text-cyan-400 transition-colors" />
+              <ChevronLeft className="w-5 h-5 text-violet-500 group-hover:text-cyan-600 transition-colors" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="group w-12 h-12 rounded-full border border-violet-500/30 flex items-center justify-center hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300"
+              className="group w-12 h-12 rounded-full border border-violet-200 flex items-center justify-center hover:border-cyan-500 hover:bg-cyan-50 transition-all duration-300"
               aria-label="Next"
             >
-              <ChevronRight className="w-5 h-5 text-violet-400 group-hover:text-cyan-400 transition-colors" />
+              <ChevronRight className="w-5 h-5 text-violet-500 group-hover:text-cyan-600 transition-colors" />
             </button>
           </motion.div>
         </div>
@@ -100,7 +100,7 @@ const Gallery = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative flex-shrink-0 w-[85vw] sm:w-[45vw] lg:w-[30vw] snap-start"
             >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-violet-500/20 hover:border-cyan-400/50 transition-all duration-500 bg-[#1a1033]">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-violet-200 hover:border-cyan-400/50 transition-all duration-500 bg-slate-100 shadow-sm hover:shadow-xl">
                 {/* Image */}
                 <img
                   src={item.src}
@@ -109,18 +109,18 @@ const Gallery = () => {
                 />
                 
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0a1a] via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent opacity-60" />
                 
                 {/* Hover overlay with zoom icon */}
-                <div className="absolute inset-0 bg-violet-600/0 group-hover:bg-violet-600/20 transition-all duration-500 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-cyan-400/0 group-hover:bg-cyan-400 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-all duration-500">
-                    <ZoomIn className="w-6 h-6 text-slate-900" />
+                <div className="absolute inset-0 bg-violet-600/0 group-hover:bg-violet-600/10 transition-all duration-500 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full bg-cyan-500/0 group-hover:bg-cyan-500 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-all duration-500">
+                    <ZoomIn className="w-6 h-6 text-white" />
                   </div>
                 </div>
 
                 {/* Category badge */}
-                <div className="absolute top-4 left-4 px-3 py-1 bg-slate-900/80 backdrop-blur-sm border border-violet-500/30 rounded-full">
-                  <span className="text-cyan-400 text-xs font-semibold uppercase tracking-wider">
+                <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm border border-violet-200 rounded-full shadow-sm">
+                  <span className="text-cyan-600 text-xs font-semibold uppercase tracking-wider">
                     {item.category}
                   </span>
                 </div>
@@ -130,8 +130,8 @@ const Gallery = () => {
                   <h3 className="text-xl font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors duration-300">
                     {item.name}
                   </h3>
-                  <div className="flex items-center gap-2 text-slate-400 text-sm">
-                    <span className="w-8 h-px bg-violet-500 group-hover:w-12 group-hover:bg-cyan-400 transition-all duration-300" />
+                  <div className="flex items-center gap-2 text-slate-300 text-sm">
+                    <span className="w-8 h-px bg-violet-400 group-hover:w-12 group-hover:bg-cyan-400 transition-all duration-300" />
                     <span>View in Fleet</span>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ const Gallery = () => {
           {images.map((_, index) => (
             <div
               key={index}
-              className="w-2 h-2 rounded-full bg-violet-500/30"
+              className="w-2 h-2 rounded-full bg-violet-200"
             />
           ))}
         </motion.div>
@@ -168,14 +168,14 @@ const Gallery = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center mt-12"
         >
-          <p className="text-slate-400 mb-4">
+          <p className="text-slate-500 mb-4">
             See something you need? Browse our full fleet of 500+ machines.
           </p>
           <motion.a
             href="#machinery"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-violet-600 text-white font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-violet-600 text-white font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-cyan-500 hover:text-white transition-all duration-300"
           >
             Browse All Equipment
             <ChevronRight className="w-4 h-4" />

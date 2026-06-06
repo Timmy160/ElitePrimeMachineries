@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUp, Wrench, Calendar, Shield } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -9,53 +9,88 @@ const Footer = () => {
 
   return (
     <footer
-      className="relative bg-white border-t border-violet-200"
+      className="relative bg-slate-50 border-t border-slate-200"
       style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif' }}
     >
-      {/* Top accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+      {/* Top accent line — left-aligned instead of centered */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-emerald-600/50 via-amber-500/50 to-transparent" />
 
       {/* Main Footer */}
       <div className="py-16 px-6 md:px-12 lg:px-20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+          {/* NEW: Top feature strip — 3 columns above the main grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-12 pb-12 border-b border-slate-200"
+          >
+            {[
+              {
+                icon: Wrench,
+                title: "Fleet Maintenance",
+                desc: "200-point inspection protocol",
+              },
+              {
+                icon: Calendar,
+                title: "Flexible Terms",
+                desc: "Daily to annual agreements",
+              },
+              {
+                icon: Shield,
+                title: "Full Coverage",
+                desc: "Insurance included on every unit",
+              },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-4 p-4 bg-white rounded-xl border border-slate-200">
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center flex-shrink-0">
+                  <item.icon className="w-5 h-5 text-emerald-600" />
+                </div>
+                <div>
+                  <h4 className="text-slate-900 font-bold text-sm">{item.title}</h4>
+                  <p className="text-slate-400 text-xs">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             
-            {/* Brand Column */}
+            {/* Brand Column — wider, with tagline below instead of beside */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="lg:col-span-1"
             >
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                DKAdams{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-500">
-                  Rentals
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                Elite Prime{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-amber-500">
+                  Machineries
                 </span>
               </h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-6">
-                Your trusted partner for reliable construction equipment rental. 
-                500+ machines, 24/7 support, same-day delivery.
+                Heavy equipment solutions for construction, industrial, and agricultural operations. 
+                750+ certified units, nationwide dispatch, terms that work for your timeline.
               </p>
               
-              {/* Contact mini */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-slate-500 text-sm">
-                  <Mail className="w-4 h-4 text-cyan-600" />
-                  <span>Support@dkadamsrentals.com</span>
+              {/* Contact mini — horizontal on desktop instead of vertical stack */}
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
+                <div className="flex items-center gap-2 text-slate-500 text-sm">
+                  <Mail className="w-4 h-4 text-emerald-600" />
+                  <span>info@eliteprimemachineries.com</span>
                 </div>
-                <div className="flex items-center gap-3 text-slate-500 text-sm">
-                  <Phone className="w-4 h-4 text-violet-600" />
-                  <span>509 205 5516</span>
-                </div>
-                <div className="flex items-center gap-3 text-slate-500 text-sm">
-                  <MapPin className="w-4 h-4 text-cyan-600" />
-                  <span>12212 Craven Ave, Cleveland, OH</span>
+                
+                <div className="flex items-center gap-2 text-slate-500 text-sm">
+                  <MapPin className="w-4 h-4 text-emerald-600" />
+                  <span>138 E 50th St #Tr61, New York, NY 10022</span>
                 </div>
               </div>
             </motion.div>
 
-            {/* Quick Links */}
+            {/* Quick Links — 2 columns on tablet instead of 1 */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -63,22 +98,22 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h4 className="text-slate-900 font-bold mb-6 uppercase tracking-wider text-sm">
-                Quick Links
+                Navigate
               </h4>
               <ul className="space-y-3">
                 {[
-                  { label: "About Us", href: "#aboutus" },
-                  { label: "Our Fleet", href: "#machinery" },
-                  { label: "Services", href: "#ourservices" },
-                  { label: "Gallery", href: "#gallery" },
-                  { label: "Contact", href: "#contactus" },
+                  { label: "Company", href: "#aboutus" },
+                  { label: "Inventory", href: "#machinery" },
+                  { label: "Solutions", href: "#ourservices" },
+                  { label: "Fleet Preview", href: "#gallery" },
+                  { label: "Connect", href: "#contactus" },
                 ].map((link, i) => (
                   <li key={i}>
                     <a
                       href={link.href}
-                      className="text-slate-500 hover:text-cyan-600 transition-colors duration-300 text-sm flex items-center gap-2 group"
+                      className="text-slate-500 hover:text-emerald-600 transition-colors duration-300 text-sm flex items-center gap-2 group"
                     >
-                      <span className="w-0 group-hover:w-2 h-px bg-cyan-500 transition-all duration-300" />
+                      <span className="w-0 group-hover:w-2 h-px bg-emerald-500 transition-all duration-300" />
                       {link.label}
                     </a>
                   </li>
@@ -98,48 +133,71 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {[
-                  "Construction",
-                  "Industrial",
+                  "Earthmoving",
+                  "Material Handling",
+                  "Compaction",
                   "Agricultural",
-                  "Excavators",
-                  "Loaders & Dozers",
+                  "Power & Access",
                 ].map((item, i) => (
                   <li key={i}>
                     <a
                       href="#machinery"
-                      className="text-slate-500 hover:text-violet-600 transition-colors duration-300 text-sm flex items-center gap-2 group"
+                      className="text-slate-500 hover:text-amber-600 transition-colors duration-300 text-sm flex items-center gap-2 group"
                     >
-                      <span className="w-0 group-hover:w-2 h-px bg-violet-500 transition-all duration-300" />
+                      <span className="w-0 group-hover:w-2 h-px bg-amber-500 transition-all duration-300" />
                       {item}
                     </a>
                   </li>
                 ))}
               </ul>
             </motion.div>
+
+            {/* Fourth column — Hours & Status */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <h4 className="text-slate-900 font-bold mb-6 uppercase tracking-wider text-sm">
+                Operations
+              </h4>
+              <div className="space-y-4">
+                <div className="p-4 bg-white rounded-xl border border-slate-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-emerald-600 text-xs font-semibold uppercase tracking-wider">Dispatch Active</span>
+                  </div>
+                  <p className="text-slate-900 font-bold text-sm">Mon – Sat: 6AM – 8PM</p>
+                  <p className="text-slate-400 text-xs">Emergency: 24/7</p>
+                </div>
+                <div className="p-4 bg-white rounded-xl border border-slate-200">
+                  <p className="text-slate-900 font-bold text-sm">Same-Day Deploy</p>
+                  <p className="text-slate-400 text-xs">Available within 50mi radius</p>
+                </div>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Bottom Bar */}
+          {/* Bottom Bar — scroll-to-top on LEFT, copyright on RIGHT */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="pt-8 border-t border-violet-100 flex flex-col md:flex-row justify-between items-center gap-4"
+            className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4"
           >
-            <p className="text-slate-400 text-sm">
-              © {new Date().getFullYear()} DKAdams Rentals. All rights reserved.
+            {/* Back to top — LEFT side */}
+            <button
+              onClick={scrollToTop}
+              className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-300 group"
+            >
+              <ArrowUp className="w-5 h-5 text-slate-400 group-hover:text-emerald-600" />
+            </button>
+
+            <p className="text-slate-400 text-sm order-first md:order-none">
+              © {new Date().getFullYear()} Elite Prime Machineries. All rights reserved.
             </p>
-            
-            <div className="flex items-center gap-6">
-             
-              {/* Back to top */}
-              <button
-                onClick={scrollToTop}
-                className="w-10 h-10 rounded-full border border-violet-200 flex items-center justify-center hover:border-cyan-500 hover:bg-cyan-50 transition-all duration-300 group"
-              >
-                <ArrowUp className="w-5 h-5 text-slate-400 group-hover:text-cyan-600" />
-              </button>
-            </div>
           </motion.div>
         </div>
       </div>

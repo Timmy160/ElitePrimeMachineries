@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight, X, Filter } from "lucide-react";
 
 // All image imports preserved exactly as you have them
 import WheelLoader from "../assets/IMG/Wheel.jpg";
@@ -34,11 +35,11 @@ import ManureSpreader from "../assets/IMG/ManureSpreader.jpg";
 function MachineryListings() {
   const [activeCategory, setActiveCategory] = useState("Construction");
   const [selectedMachine, setSelectedMachine] = useState(null);
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [expandedId, setExpandedId] = useState(null);
 
   const machineryData = {
     Construction: [
-        {
+      {
         id: 1,
         name: "Wheel Loader (3 m³ Bucket)",
         description: "Versatile loader for material handling, grading, and loading trucks efficiently.",
@@ -281,18 +282,22 @@ function MachineryListings() {
     setSelectedMachine(null);
   };
 
+  const toggleExpand = (id) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
+
   return (
     <section
       id="machinery"
       className="py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-white min-h-screen"
       style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif' }}
     >
-      {/* Header */}
-      <div className="max-w-7xl mx-auto mb-12">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <div className="flex gap-8 mb-8">
           <div className="hidden md:flex flex-col items-center gap-4">
-            <div className="w-px h-20 bg-gradient-to-b from-cyan-500 to-violet-600" />
-            <div className="w-2 h-2 rounded-full bg-cyan-500" />
+            <div className="w-px h-20 bg-gradient-to-b from-emerald-500 to-amber-500" />
+            <div className="w-2 h-2 rounded-full bg-emerald-500" />
           </div>
           
           <div className="flex-1">
@@ -303,8 +308,8 @@ function MachineryListings() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-4"
             >
-              <span className="text-cyan-600 text-sm font-semibold tracking-[0.2em] uppercase">
-                Our Fleet
+              <span className="text-emerald-600 text-sm font-semibold tracking-[0.2em] uppercase">
+                Full Inventory
               </span>
             </motion.div>
             
@@ -315,11 +320,10 @@ function MachineryListings() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 max-w-2xl leading-tight"
             >
-              Available{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-500">
-                Machinery
-              </span>{" "}
-              for Rent
+              Browse Our{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-amber-500">
+                Equipment Range
+              </span>
             </motion.h2>
             
             <motion.p
@@ -329,133 +333,181 @@ function MachineryListings() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-4 text-slate-500 max-w-xl text-lg"
             >
-              Browse our wide range of well-maintained equipment. Click any machine for full specifications.
+              Explore our diverse fleet of well-maintained machinery across three core sectors. Tap any unit for full technical specifications.
             </motion.p>
           </div>
         </div>
 
-        {/* Category Tabs */}
+        {/* Category Tabs — PILL STYLE horizontal, centered */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-2 md:gap-3 mb-12"
         >
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`group relative px-8 py-4 rounded-xl border transition-all duration-500 ${
+              className={`group relative px-6 py-3 rounded-full border transition-all duration-500 ${
                 activeCategory === category
-                  ? "border-cyan-400 bg-gradient-to-r from-violet-50 to-cyan-50 shadow-md"
-                  : "border-violet-200 bg-white hover:border-violet-300 hover:shadow-sm"
+                  ? "border-emerald-500 bg-emerald-700 text-white shadow-lg"
+                  : "border-slate-200 bg-white text-slate-500 hover:border-emerald-300 hover:text-emerald-600"
               }`}
             >
-              <span className={`text-lg font-bold transition-colors duration-300 ${
-                activeCategory === category ? "text-slate-900" : "text-slate-500 group-hover:text-slate-900"
+              <span className={`text-sm font-bold transition-colors duration-300 ${
+                activeCategory === category ? "text-white" : ""
               }`}>
                 {category}
               </span>
-              
-              {/* Active indicator line */}
-              {activeCategory === category && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-violet-600 to-cyan-500"
-                />
-              )}
             </button>
           ))}
         </motion.div>
 
-        {/* Masonry Grid */}
+        {/* VERTICAL LIST LAYOUT — completely different from grid */}
         <motion.div
           key={activeCategory}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          className="space-y-4"
         >
           {machineryData[activeCategory]?.map((machine, index) => {
-            const isLarge = index === 0 || index === 6;
+            const isExpanded = expandedId === machine.id;
             
             return (
               <motion.div
                 key={machine.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                onMouseEnter={() => setHoveredCard(machine.id)}
-                onMouseLeave={() => setHoveredCard(null)}
-                onClick={() => openModal(machine)}
-                className={`group cursor-pointer relative overflow-hidden rounded-2xl border border-violet-200 hover:border-cyan-400/50 transition-all duration-500 shadow-sm hover:shadow-lg ${
-                  isLarge ? "md:col-span-2 lg:col-span-2" : ""
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className={`group relative bg-white border rounded-xl overflow-hidden transition-all duration-500 ${
+                  isExpanded ? "border-emerald-400 shadow-lg" : "border-slate-200 hover:border-emerald-300 hover:shadow-md"
                 }`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white" />
-                <div className="absolute inset-0 bg-gradient-to-br from-violet-100/0 to-cyan-100/0 group-hover:from-violet-100/50 group-hover:to-cyan-100/50 transition-all duration-500" />
-
-                {/* Image Container */}
-                <div className={`relative overflow-hidden ${isLarge ? "h-64" : "h-48"}`}>
-                  <img
-                    src={machine.image}
-                    alt={machine.name}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60" />
-                  
-                  {/* Price badge */}
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm border border-cyan-200 rounded-full shadow-sm">
-                    <span className="text-cyan-700 font-bold text-sm">{machine.price}</span>
-                  </div>
-
-                  {/* Hover overlay */}
-                  <AnimatePresence>
-                    {hoveredCard === machine.id && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-violet-600/10 backdrop-blur-sm flex items-center justify-center"
-                      >
-                        <span className="px-6 py-3 bg-cyan-600 text-white font-bold uppercase tracking-wider rounded-lg flex items-center gap-2 shadow-lg">
-                          View Details
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
-                        </span>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 p-6">
-                  <h3 className={`font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors duration-300 ${isLarge ? "text-xl" : "text-lg"}`}>
-                    {machine.name}
-                  </h3>
-                  <p className="text-slate-500 text-sm leading-relaxed line-clamp-2">
-                    {machine.description}
-                  </p>
-                  
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {machine.details.split("•").slice(0, 2).map((spec, i) => (
-                      <span key={i} className="px-2 py-1 bg-violet-50 border border-violet-200 rounded text-xs text-violet-700">
-                        {spec.trim()}
+                {/* Horizontal card: Image LEFT, content RIGHT */}
+                <div className="flex flex-col sm:flex-row">
+                  {/* Image — fixed width on left, square aspect */}
+                  <div 
+                    className="relative w-full sm:w-48 md:w-56 lg:w-64 h-48 sm:h-auto flex-shrink-0 overflow-hidden cursor-pointer"
+                    onClick={() => openModal(machine)}
+                  >
+                    <img
+                      src={machine.image}
+                      alt={machine.name}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-slate-900/10" />
+                    
+                    {/* Price badge — top-left of image */}
+                    <div className="absolute top-3 left-3 px-3 py-1 bg-emerald-700 text-white font-bold text-xs rounded-full shadow-sm">
+                      {machine.price}
+                    </div>
+                    
+                    {/* View overlay on hover */}
+                    <div className="absolute inset-0 bg-emerald-600/0 group-hover:bg-emerald-600/20 transition-all duration-300 flex items-center justify-center">
+                      <span className="px-4 py-2 bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-lg opacity-0 group-hover:opacity-100 transform scale-90 group-hover:scale-100 transition-all duration-300">
+                        Enlarge
                       </span>
-                    ))}
+                    </div>
+                  </div>
+
+                  {/* Content — stacked vertically next to image */}
+                  <div className="flex-1 p-5 md:p-6 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-start justify-between gap-4 mb-2">
+                        <h3 className="text-lg md:text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors duration-300">
+                          {machine.name}
+                        </h3>
+                        <button
+                          onClick={() => toggleExpand(machine.id)}
+                          className={`flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                            isExpanded 
+                              ? "border-emerald-500 bg-emerald-50 text-emerald-600 rotate-90" 
+                              : "border-slate-200 text-slate-400 group-hover:border-emerald-500 group-hover:text-emerald-600"
+                          }`}
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </div>
+                      
+                      <p className="text-slate-500 text-sm leading-relaxed mb-4">
+                        {machine.description}
+                      </p>
+
+                      {/* Spec tags — horizontal scroll */}
+                      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                        {machine.details.split("•").slice(0, 3).map((spec, i) => (
+                          <span key={i} className="flex-shrink-0 px-3 py-1 bg-emerald-50 border border-emerald-100 rounded-full text-xs text-emerald-700">
+                            {spec.trim()}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Bottom action row */}
+                    <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
+                      <button
+                        onClick={() => openModal(machine)}
+                        className="text-emerald-600 text-sm font-semibold hover:text-amber-600 transition-colors duration-300 flex items-center gap-1"
+                      >
+                        Full Specs
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                      
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          document.getElementById("contactus")?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                        className="px-5 py-2 bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-amber-500 hover:text-slate-900 transition-all duration-300"
+                      >
+                        Reserve
+                      </motion.button>
+                    </div>
                   </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-violet-600 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                {/* Expandable specs section */}
+                <AnimatePresence>
+                  {isExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden border-t border-slate-100"
+                    >
+                      <div className="p-5 md:p-6 bg-slate-50">
+                        <h4 className="text-emerald-600 font-semibold uppercase tracking-wider text-xs mb-3">
+                          Complete Specifications
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                          {machine.details.split("•").filter(s => s.trim()).map((spec, i) => (
+                            <div key={i} className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0" />
+                              <span className="text-slate-600 text-sm">{spec.trim()}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Left accent bar */}
+                <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-600 to-amber-500 transition-all duration-500 ${
+                  isExpanded ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                }`} />
               </motion.div>
             );
           })}
         </motion.div>
       </div>
 
-      {/* Modal */}
+      {/* Modal — side panel instead of centered overlay */}
       <AnimatePresence>
         {selectedMachine && (
           <motion.div
@@ -463,89 +515,82 @@ function MachineryListings() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-slate-900/80 backdrop-blur-md flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50"
             onClick={closeModal}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white border border-violet-200 rounded-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto relative shadow-2xl"
+              className="absolute right-0 top-0 bottom-0 w-full max-w-xl bg-white border-l border-slate-200 shadow-2xl overflow-y-auto"
             >
-              {/* Top accent line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-600 to-cyan-500 z-10" />
-              
               {/* Close button */}
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 w-10 h-10 bg-white/90 border border-violet-200 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-cyan-500 transition-all duration-300 z-10 shadow-sm"
+                className="absolute top-4 right-4 z-20 w-10 h-10 bg-white/90 border border-slate-200 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-emerald-500 transition-all duration-300 shadow-sm"
               >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <X className="w-5 h-5" />
               </button>
 
-              <div className="p-0">
-                {/* FULL-SIZE IMAGE */}
-                <div className="relative w-full bg-slate-100 flex items-center justify-center p-4 md:p-8">
-                  <img
-                    src={selectedMachine.image}
-                    alt={selectedMachine.name}
-                    className="max-w-full max-h-[60vh] w-auto h-auto object-contain rounded-lg shadow-xl"
-                  />
-                  
-                  {/* Price tag overlay */}
-                  <div className="absolute bottom-6 right-6 px-4 py-2 bg-cyan-600 text-white font-bold text-lg rounded-lg shadow-lg">
+              {/* Image — full width at top */}
+              <div className="relative h-64 md:h-80 bg-slate-100">
+                <img
+                  src={selectedMachine.image}
+                  alt={selectedMachine.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="inline-block px-3 py-1 bg-emerald-700 text-white font-bold text-sm rounded-full mb-2">
                     {selectedMachine.price}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">
+                    {selectedMachine.name}
+                  </h3>
+                </div>
+              </div>
+
+              <div className="p-6 md:p-8">
+                <p className="text-slate-600 text-base leading-relaxed mb-6">
+                  {selectedMachine.description}
+                </p>
+
+                {/* Specs */}
+                <div className="mb-8">
+                  <h4 className="text-emerald-600 font-semibold uppercase tracking-wider text-xs mb-4">
+                    Technical Specifications
+                  </h4>
+                  <div className="space-y-3">
+                    {selectedMachine.details.split("•").filter(s => s.trim()).map((spec, i) => (
+                      <div key={i} className="flex items-start gap-3 p-3 bg-emerald-50 border border-emerald-100 rounded-lg">
+                        <div className="w-2 h-2 rounded-full bg-amber-500 mt-1.5 flex-shrink-0" />
+                        <span className="text-slate-700 text-sm">{spec.trim()}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <div className="p-8">
-                  <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-                    {selectedMachine.name}
-                  </h3>
-
-                  <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                    {selectedMachine.description}
-                  </p>
-
-                  {/* Specs grid */}
-                  <div className="mb-8">
-                    <h4 className="text-cyan-600 font-semibold uppercase tracking-wider text-sm mb-4">
-                      Technical Specifications
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {selectedMachine.details.split("•").filter(s => s.trim()).map((spec, i) => (
-                        <div key={i} className="flex items-start gap-3 p-3 bg-violet-50 border border-violet-200 rounded-lg">
-                          <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2 flex-shrink-0" />
-                          <span className="text-slate-700 text-sm">{spec.trim()}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* CTAs */}
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => {
-                        closeModal();
-                        document.getElementById("contactus")?.scrollIntoView({ behavior: "smooth" });
-                      }}
-                      className="flex-1 py-4 bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-bold uppercase tracking-wider rounded-lg hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
-                    >
-                      Rent This Machine
-                    </motion.button>
-                    <button
-                      onClick={closeModal}
-                      className="flex-1 py-4 border border-violet-200 text-slate-600 font-semibold rounded-lg hover:border-cyan-500 hover:text-slate-900 transition-all duration-300"
-                    >
-                      Continue Browsing
-                    </button>
-                  </div>
+                {/* CTAs */}
+                <div className="space-y-3">
+                  <motion.button
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    onClick={() => {
+                      closeModal();
+                      document.getElementById("contactus")?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="w-full py-4 bg-emerald-700 text-white font-bold uppercase tracking-wider rounded-lg hover:bg-amber-500 hover:text-slate-900 transition-all duration-300"
+                  >
+                    Request This Unit
+                  </motion.button>
+                  <button
+                    onClick={closeModal}
+                    className="w-full py-4 border border-slate-200 text-slate-600 font-semibold rounded-lg hover:border-emerald-500 hover:text-slate-900 transition-all duration-300"
+                  >
+                    Continue Browsing
+                  </button>
                 </div>
               </div>
             </motion.div>

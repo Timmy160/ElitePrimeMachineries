@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import HeroImg from "../assets/IMG/hero_pg.jpg";
+import HeroImg from "../assets/IMG/elitehero.jpg";
 
 const Hero = () => {
   const handleBrowseClick = () => {
@@ -58,35 +58,39 @@ const Hero = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 2.5, ease: "easeOut" }}
           className="absolute inset-0 bg-center bg-cover bg-no-repeat"
-          style={{ backgroundImage: `url(${HeroImg})` }}
+          style={{ 
+            backgroundImage: `url(${HeroImg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+          }}
         />
       </div>
 
-      {/* Deep space gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0f0a1a]/95 via-[#1a1033]/80 to-transparent" />
+      {/* Overlay — darker warm earth tones */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0f0a05]/98 via-[#1a1108]/90 to-[#0f0a05]/70" />
       
       {/* Top gradient line */}
       <motion.div
         variants={lineVariants}
         initial="hidden"
         animate="visible"
-        className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-600 via-purple-500 to-cyan-400 origin-left"
+        className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 via-amber-500 to-orange-400 origin-left"
       />
       
-      {/* Bottom accent line - hidden on mobile */}
+      {/* Bottom accent line */}
       <motion.div
         variants={lineVariants}
         initial="hidden"
         animate="visible"
-        className="absolute bottom-32 left-0 w-32 h-px bg-cyan-400 origin-left hidden md:block"
+        className="absolute bottom-32 left-0 w-32 h-px bg-amber-400 origin-left hidden md:block"
       />
 
-      {/* Decorative rotated square - constrained to prevent overflow */}
+      {/* Decorative rotated square — LEFT side */}
       <motion.div
-        initial={{ opacity: 0, x: 100 }}
+        initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 0.1, x: 0 }}
         transition={{ duration: 1.5, delay: 1 }}
-        className="absolute right-0 top-1/4 w-48 h-48 lg:w-64 lg:h-64 border border-violet-500/20 rotate-45 hidden lg:block translate-x-1/2"
+        className="absolute left-0 top-1/4 w-48 h-48 lg:w-64 lg:h-64 border border-emerald-500/20 rotate-45 hidden lg:block -translate-x-1/2"
       />
 
       <motion.div
@@ -99,9 +103,9 @@ const Hero = () => {
           variants={itemVariants}
           className="flex items-center gap-3 mb-6"
         >
-          <span className="w-8 sm:w-12 h-px bg-cyan-400" />
-          <span className="text-cyan-400 text-xs sm:text-sm font-semibold  ">
-            DKAdams Rentals
+          <span className="w-8 sm:w-12 h-px bg-amber-400" />
+          <span className="text-amber-400 text-xs sm:text-sm font-semibold">
+            Elite Prime Machineries
           </span>
         </motion.div>
 
@@ -110,10 +114,10 @@ const Hero = () => {
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-4 md:mb-6"
           >
-            Rent The Right Machine
+            Deploy Heavy Assets
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">
-              For Every Job Site
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-400">
+              Without The Overhead
             </span>
           </motion.h1>
 
@@ -121,9 +125,9 @@ const Hero = () => {
             variants={itemVariants}
             className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 max-w-2xl mb-6 md:mb-8 lg:mb-10 leading-relaxed"
           >
-            Flexible daily, weekly, and monthly rates on excavators, loaders, 
-            cranes, and more. Get reliable machinery delivered to your site 
-            when you need it — no long-term commitments.
+            Strategic short-term and long-term equipment solutions for enterprises 
+            scaling operations. Access certified industrial machinery on demand — 
+            optimized for your project lifecycle with zero capital lock-in.
           </motion.p>
 
           <motion.div variants={itemVariants} className="mb-8 md:mb-0">
@@ -131,10 +135,10 @@ const Hero = () => {
               whileHover={{ scale: 1.02, x: 5 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleBrowseClick}
-              className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-violet-600 text-white font-bold text-sm tracking-wider uppercase overflow-hidden rounded-sm"
+              className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-emerald-700 text-white font-bold text-sm tracking-wider uppercase overflow-hidden rounded-lg"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Browse Rental Fleet
+                View Equipment Catalog
                 <svg 
                   className="w-4 h-4 transition-transform group-hover:translate-x-1" 
                   fill="none" 
@@ -145,7 +149,7 @@ const Hero = () => {
                 </svg>
               </span>
               <motion.div
-                className="absolute inset-0 bg-cyan-400"
+                className="absolute inset-0 bg-amber-500"
                 initial={{ x: "-100%" }}
                 whileHover={{ x: 0 }}
                 transition={{ duration: 0.3 }}
@@ -154,16 +158,16 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Stats section - responsive positioning */}
+        {/* Stats section */}
         <motion.div
           variants={itemVariants}
           className="mt-8 md:mt-12 lg:absolute lg:bottom-10 lg:left-6 lg:right-6 xl:left-12 xl:right-12"
         >
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-2xl border-t border-violet-500/20 pt-6 md:pt-8">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-2xl border-t border-emerald-500/20 pt-6 md:pt-8">
             {[
-              { value: "500+", label: "Rental Units" },
-              { value: "Same-Day", label: "Delivery" },
-              { value: "Flexible", label: "Rental Terms" },
+              { value: "750+", label: "Fleet Assets" },
+              { value: "Rapid", label: "Deployment" },
+              { value: "Adaptive", label: "Contract Terms" },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -175,7 +179,7 @@ const Hero = () => {
                 <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1">
                   {stat.value}
                 </div>
-                <div className="text-[10px] sm:text-xs text-violet-300 uppercase tracking-wider">
+                <div className="text-[10px] sm:text-xs text-amber-300 uppercase tracking-wider">
                   {stat.label}
                 </div>
               </motion.div>
@@ -184,20 +188,20 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator - constrained */}
+      {/* Scroll indicator — RIGHT side */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-6 right-4 sm:bottom-8 sm:right-8 hidden lg:flex flex-col items-center gap-2"
       >
-        <span className="text-violet-300 text-xs tracking-widest uppercase rotate-90 origin-center translate-y-8">
+        <span className="text-emerald-300 text-xs tracking-widest uppercase rotate-90 origin-center translate-y-8">
           Scroll
         </span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-12 sm:h-16 bg-gradient-to-b from-cyan-400 to-transparent"
+          className="w-px h-12 sm:h-16 bg-gradient-to-b from-amber-400 to-transparent"
         />
       </motion.div>
     </section>

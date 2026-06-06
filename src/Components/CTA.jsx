@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
+import { Mail, MapPin, ArrowRight } from "lucide-react";
 
 const CTA = () => {
   const handleContactClick = () => {
@@ -13,136 +13,105 @@ const CTA = () => {
   return (
     <section
       id="cta"
-      className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 lg:px-20 bg-white overflow-hidden"
+      className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 lg:px-20 bg-slate-50 overflow-hidden"
       style={{ fontFamily: '"Space Grotesk", "Inter", sans-serif' }}
     >
-      {/* Background effects - subtle for white */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-100/50 via-transparent to-cyan-100/50" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-violet-600/50 to-transparent" />
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-bl from-emerald-100/50 via-transparent to-amber-100/50" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-emerald-400/50 via-transparent to-transparent" />
+      <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-amber-600/50 via-transparent to-transparent" />
       
-      {/* Floating orbs - lighter for white bg */}
-      <div className="hidden sm:block absolute top-20 left-10 md:left-20 w-48 h-48 md:w-64 md:h-64 bg-violet-200/40 rounded-full blur-3xl" />
-      <div className="hidden sm:block absolute bottom-20 right-10 md:right-20 w-48 h-48 md:w-64 md:h-64 bg-cyan-200/40 rounded-full blur-3xl" />
+      <div className="hidden sm:block absolute top-20 right-10 md:right-20 w-48 h-48 md:w-64 md:h-64 bg-emerald-200/30 rounded-full blur-3xl" />
+      <div className="hidden sm:block absolute bottom-20 left-10 md:left-20 w-48 h-48 md:w-64 md:h-64 bg-amber-200/30 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-start lg:items-center">
-          
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center lg:text-left"
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 md:mb-16"
+        >
+          <div className="flex items-center gap-3 mb-4 md:mb-6">
+            <span className="w-8 md:w-12 h-px bg-emerald-500" />
+            <span className="text-emerald-600 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase">
+              Start Today
+            </span>
+            <span className="w-8 md:w-12 h-px bg-amber-500" />
+          </div>
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight mb-4 md:mb-6 max-w-3xl">
+            Ready to Mobilize Your{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-amber-500">
+              Next Operation?
+            </span>
+          </h2>
+
+          <p className="text-slate-500 text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 max-w-2xl">
+            Equipment delays cost more than money — they cost momentum. Lock in the assets 
+            you need now, delivered to your coordinates on your timeline, with terms that 
+            protect your margin.
+          </p>
+
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleContactClick}
+            className="group inline-flex items-center gap-2 md:gap-3 px-8 md:px-10 py-3 md:py-4 bg-emerald-700 text-white font-bold text-sm md:text-base lg:text-lg uppercase tracking-wider rounded-lg hover:bg-amber-500 hover:text-slate-900 transition-all duration-300"
           >
-            <div className="flex items-center justify-center lg:justify-start gap-3 mb-4 md:mb-6">
-              <span className="w-8 md:w-12 h-px bg-cyan-500" />
-              <span className="text-cyan-600 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase">
-                Get Started
-              </span>
-            </div>
+            Reserve Equipment
+            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform" />
+          </motion.button>
+        </motion.div>
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight mb-4 md:mb-6">
-              Ready to Power Your{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-500">
-                Next Project?
-              </span>
-            </h2>
-
-            <p className="text-slate-500 text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 max-w-xl mx-auto lg:mx-0">
-              Don't let equipment delays slow you down. Get the right machinery 
-              delivered to your site when you need it — with rates that keep your budget on track.
-            </p>
-
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={handleContactClick}
-              className="group inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-bold text-sm md:text-base lg:text-lg uppercase tracking-wider rounded-lg hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 w-full sm:w-auto justify-center"
-            >
-              Rent Equipment Now
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          </motion.div>
-
-          {/* Right - Contact Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-3 md:space-y-4"
-          >
-            {[
-              {
-                icon: Phone,
-                label: "Call Us 24/7",
-                value: "509 205 5516",
-                subtext: "Emergency support available",
-              },
-              {
-                icon: Mail,
-                label: "Email Us",
-                value: "Support@dkadamsrentals.com",
-                subtext: "Quotes within 2 hours",
-              },
-              {
-                icon: MapPin,
-                label: "Visit Our Yard",
-                value: "12212 Craven Ave, Cleveland, OH 44105",
-                subtext: "Mon-Sat: 6AM - 8PM",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                className="group flex items-start sm:items-center gap-3 md:gap-5 p-4 md:p-6 bg-white border border-violet-200 rounded-xl hover:border-cyan-400/50 hover:shadow-md transition-all duration-500"
-              >
-                <div className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-lg bg-gradient-to-br from-violet-100 to-cyan-100 flex items-center justify-center border border-violet-200 group-hover:border-cyan-400/50 transition-colors duration-300">
-                  <item.icon className="w-5 h-5 md:w-6 md:h-6 text-cyan-600" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className="text-violet-600 text-xs font-semibold uppercase tracking-wider block mb-0.5 md:mb-1">
-                    {item.label}
-                  </span>
-                  <span className="text-slate-900 font-bold text-sm md:text-lg block truncate">
-                    {item.value}
-                  </span>
-                  <span className="text-slate-400 text-xs md:text-sm">
-                    {item.subtext}
-                  </span>
-                </div>
-                <div className="hidden sm:flex flex-shrink-0 w-8 h-8 rounded-full border border-violet-200 items-center justify-center group-hover:border-cyan-500 group-hover:bg-cyan-50 transition-all duration-300">
-                  <ArrowRight className="w-4 h-4 text-violet-500 group-hover:text-cyan-600 transform group-hover:translate-x-0.5 transition-all" />
-                </div>
-              </motion.div>
-            ))}
-
-            {/* Trust badge */}
+        {/* Contact Cards — just two, side by side */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6"
+        >
+          {[
+            {
+              icon: Mail,
+              label: "Email Us",
+              value: "info@eliteprimemachineries.com",
+              subtext: "Response under 1 hour",
+            },
+            {
+              icon: MapPin,
+              label: "Main Yard",
+              value: "138 E 50th St #Tr61, New York, NY 10022",
+              subtext: "Mon–Sat: 6AM – 8PM",
+            },
+          ].map((item, index) => (
             <motion.div
+              key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4"
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              className="group flex items-start gap-4 md:gap-5 p-5 md:p-6 bg-white border border-slate-200 rounded-xl hover:border-emerald-400/50 hover:shadow-md transition-all duration-500"
             >
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 border-2 border-white flex items-center justify-center text-white font-bold text-xs">
-                    {i}★
-                  </div>
-                ))}
+              <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-emerald-100 to-amber-100 flex items-center justify-center border border-emerald-200 group-hover:border-amber-400/50 transition-colors duration-300">
+                <item.icon className="w-6 h-6 md:w-7 md:h-7 text-emerald-600" />
               </div>
-              <div className="text-slate-500 text-sm text-center sm:text-left">
-                <span className="text-slate-900 font-bold">4.9/5</span> from 200+ contractors
+              <div className="flex-1 min-w-0">
+                <span className="text-emerald-600 text-xs font-semibold uppercase tracking-wider block mb-1">
+                  {item.label}
+                </span>
+                <span className="text-slate-900 font-bold text-sm md:text-base block mb-1 break-words">
+                  {item.value}
+                </span>
+                <span className="text-slate-400 text-xs md:text-sm">
+                  {item.subtext}
+                </span>
               </div>
             </motion.div>
-          </motion.div>
-        </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

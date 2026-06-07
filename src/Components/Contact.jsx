@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Clock, ArrowRight, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Phone, Clock, ArrowRight } from "lucide-react";
 
 const Contact = () => {
   const handleContactClick = (href) => {
@@ -22,7 +22,7 @@ const Contact = () => {
       <div className="absolute bottom-20 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-amber-200/15 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header — LEFT-ALIGNED */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -36,7 +36,6 @@ const Contact = () => {
               Connect With Us
             </span>
           </div>
-
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 sm:mb-4 max-w-2xl">
             Let's Get Your{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-amber-500">
@@ -50,8 +49,8 @@ const Contact = () => {
 
         {/* Layout: Large CTA cards LEFT, contact details RIGHT */}
         <div className="grid lg:grid-cols-5 gap-8 md:gap-10 lg:gap-12">
-          
-          {/* LEFT: Two large action cards (3 columns) */}
+
+          {/* LEFT: Action cards */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -59,9 +58,9 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="lg:col-span-3 space-y-4 md:space-y-6"
           >
-            {/* Email CTA — large card */}
+            {/* Email CTA */}
             <motion.a
-              href="mailto:dispatch@eliteprimemach.com"
+              href="mailto:info@eliteprimemachineries.com"
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               className="group block relative bg-emerald-700 rounded-2xl p-8 md:p-10 overflow-hidden hover:bg-emerald-800 transition-colors duration-500"
@@ -85,10 +84,34 @@ const Contact = () => {
               </div>
             </motion.a>
 
-            
+            {/* Phone CTA */}
+            <motion.a
+              href="tel:+16467691722"
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              className="group block relative bg-amber-500 rounded-2xl p-8 md:p-10 overflow-hidden hover:bg-amber-600 transition-colors duration-500"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+              <div className="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6">
+                <div className="w-16 h-16 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-8 h-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                    Call Us Now
+                  </h3>
+                  <p className="text-amber-100 text-sm md:text-base leading-relaxed">
+                    +1 (646) 769-1722
+                  </p>
+                </div>
+                <div className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-300 flex-shrink-0">
+                  <ArrowRight className="w-5 h-5 text-white group-hover:text-amber-600 transition-colors" />
+                </div>
+              </div>
+            </motion.a>
           </motion.div>
 
-          {/* RIGHT: Contact details stack (2 columns) */}
+          {/* RIGHT: Contact details */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -111,6 +134,13 @@ const Contact = () => {
                 subtext: "Sunday: Emergency dispatch only",
                 color: "amber",
               },
+              {
+                icon: Phone,
+                label: "Direct Line",
+                value: "+1 (646) 769-1722",
+                subtext: "24/7 emergency support available",
+                color: "emerald",
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -121,8 +151,8 @@ const Contact = () => {
                 className="group p-6 md:p-8 bg-slate-50 border border-slate-200 rounded-2xl hover:border-emerald-400/50 hover:shadow-md transition-all duration-500"
               >
                 <div className={`w-12 h-12 rounded-lg flex items-center justify-center border mb-4 ${
-                  item.color === "emerald" 
-                    ? "bg-emerald-50 border-emerald-200" 
+                  item.color === "emerald"
+                    ? "bg-emerald-50 border-emerald-200"
                     : "bg-amber-50 border-amber-200"
                 }`}>
                   <item.icon className={`w-6 h-6 ${item.color === "emerald" ? "text-emerald-600" : "text-amber-600"}`} />
@@ -138,13 +168,10 @@ const Contact = () => {
                 </span>
               </motion.div>
             ))}
-
-            {/* Quick response badge */}
-             
           </motion.div>
         </div>
 
-        {/* Map Section — full width, location card on LEFT */}
+        {/* Map Section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -153,7 +180,6 @@ const Contact = () => {
           className="mt-10 sm:mt-12 md:mt-16"
         >
           <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-lg">
-            
             <div className="w-full aspect-[16/9] md:aspect-[21/9]">
               <iframe
                 src="https://www.google.com/maps?q=138+E+50th+St+%23Tr61%2C+New+York%2C+NY+10022&output=embed"
@@ -162,11 +188,9 @@ const Contact = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Elite Prime Machineries Location - 138 E 50th St #Tr61, New York, NY 10022"
+                title="Elite Prime Machineries Location"
               />
             </div>
-
-            {/* Location card overlay — LEFT side */}
             <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-20 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl p-3 sm:p-4 max-w-[200px] sm:max-w-xs shadow-lg">
               <div className="flex items-start gap-2 sm:gap-3">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center flex-shrink-0">
@@ -175,7 +199,7 @@ const Contact = () => {
                 <div>
                   <h4 className="text-slate-900 font-bold text-xs sm:text-sm mb-0.5 sm:mb-1">Elite Prime Machineries</h4>
                   <p className="text-slate-500 text-xs leading-relaxed">
-                   138 E 50th St #Tr61, New York, NY 10022
+                    138 E 50th St #Tr61, New York, NY 10022
                   </p>
                 </div>
               </div>

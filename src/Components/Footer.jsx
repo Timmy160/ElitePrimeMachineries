@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, ArrowUp, Wrench, Calendar, Shield } from "lucide-react";
+import { Mail, Phone, MapPin, Wrench, Calendar, Shield, Linkedin } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -179,7 +179,7 @@ const Footer = () => {
             </motion.div>
           </div>
 
-          {/* Bottom Bar — scroll-to-top on LEFT, copyright on RIGHT */}
+          {/* Bottom Bar — LinkedIn on LEFT, copyright on RIGHT */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -187,12 +187,13 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4"
           >
-            {/* Back to top — LEFT side */}
+            {/* LinkedIn — LEFT side */}
             <button
               onClick={scrollToTop}
-              className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-300 group"
+              className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:border-blue-600 hover:bg-blue-50 transition-all duration-300 group"
+              aria-label="LinkedIn"
             >
-              <ArrowUp className="w-5 h-5 text-slate-400 group-hover:text-emerald-600" />
+              <Linkedin className="w-5 h-5 text-slate-400 group-hover:text-blue-600" />
             </button>
 
             <p className="text-slate-400 text-sm order-first md:order-none">

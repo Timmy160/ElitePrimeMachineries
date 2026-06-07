@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// import DKadams from "../assets/IMG/DKadams_Ceo.jpg";
+import Ceo from "../assets/IMG/eliteceo.jpeg";
 
 const About = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
@@ -189,7 +189,7 @@ const About = () => {
                 <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-center md:items-start">
                   <div className="flex-shrink-0">
                     <div className="w-40 h-40 md:w-48 md:h-48 bg-slate-100 rounded-xl overflow-hidden border-2 border-dashed border-emerald-300">
-                      {/* <img src={DKadams} alt="CEO" className="w-full h-full object-cover" /> */}
+                      <img src={Ceo} alt="CEO" className="w-full h-full object-cover" />
                     </div>
                   </div>
                   <div className="flex-1 text-center md:text-left">

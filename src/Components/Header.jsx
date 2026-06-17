@@ -8,6 +8,7 @@ const Header = () => {
   const navLinks = [
     { label: "Inventory", target: "#machinery", desc: "Browse Assets" },
     { label: "Solutions", target: "#ourservices", desc: "What We Deliver" },
+    { label: "Projects", target: "#projects", desc: "Pipeline Work" },
     { label: "Company", target: "#aboutus", desc: "Our Foundation" },
     { label: "Connect", target: "#contactus", desc: "Start a Dialogue" },
   ];

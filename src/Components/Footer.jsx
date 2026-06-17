@@ -72,8 +72,9 @@ const Footer = () => {
                 </span>
               </h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-6">
-                Heavy equipment solutions for construction, industrial, and agricultural operations. 
-                750+ certified units, nationwide dispatch, terms that work for your timeline.
+                Pipeline construction and heavy equipment solutions for construction, 
+                industrial, and energy operations. 750+ certified units, nationwide 
+                dispatch, and infrastructure built to last.
               </p>
               
               {/* Contact mini — horizontal on desktop instead of vertical stack */}
@@ -103,6 +104,7 @@ const Footer = () => {
               <ul className="space-y-3">
                 {[
                   { label: "Company", href: "#aboutus" },
+                  { label: "Projects", href: "#projects" },
                   { label: "Inventory", href: "#machinery" },
                   { label: "Solutions", href: "#ourservices" },
                   { label: "Fleet Preview", href: "#gallery" },

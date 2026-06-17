@@ -9,6 +9,8 @@ import Gallery from '../Gallery';
 import Contact  from '../Contact';
 import Footer from '../Footer';
 import MachineryListings from '../MachineryListings';
+import Project from '../Project';
+
 
 function Landingpage() {
   return (
@@ -19,6 +21,7 @@ function Landingpage() {
       <Features />
       <Services />
       <MachineryListings />
+      <Project/>
       <CTA />
       <Gallery />
       <Contact />

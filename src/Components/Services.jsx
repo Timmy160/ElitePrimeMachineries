@@ -59,7 +59,7 @@ const Services = () => {
           >
             <span className="w-8 md:w-12 h-px bg-emerald-500" />
             <span className="text-emerald-600 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase">
-              Equipment Categories
+              What We Deliver
             </span>
           </motion.div>
 
@@ -75,6 +75,15 @@ const Services = () => {
               Every Terrain
             </span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-4 text-slate-500 text-sm md:text-base max-w-xl leading-relaxed"
+          >
+            In addition to our pipeline construction division, we maintain a battle-tested fleet of heavy equipment available for rent nationwide — ready to deploy when you need it.
+          </motion.p>
         </div>
 
         {/* Main Layout: Cards LEFT + Image RIGHT (swapped from original) */}

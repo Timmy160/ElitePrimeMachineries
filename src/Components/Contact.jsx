@@ -39,11 +39,11 @@ const Contact = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 sm:mb-4 max-w-2xl">
             Let's Get Your{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-amber-500">
-              Equipment Moving
+              Project Started
             </span>
           </h2>
           <p className="text-slate-500 max-w-xl text-sm sm:text-base md:text-lg">
-            Response guaranteed within the hour during business hours. Emergency line active around the clock.
+            Whether you need pipeline construction services or heavy equipment rentals, our team is ready to respond. Emergency line active around the clock.
           </p>
         </motion.div>
 

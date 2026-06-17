@@ -61,6 +61,10 @@ const About = () => {
               From excavation to elevation, we supply the right tools on your schedule — 
               with flexible agreements that protect your budget and keep your timeline intact.
             </p>
+            <p>
+              Beyond machinery, we are a full-service pipeline construction company with 
+              deep expertise in pipeline installation, maintenance, and infrastructure development.
+            </p>
           </motion.div>
 
           {/* Expandable details — horizontal accordion style instead of vertical dropdown */}
@@ -200,11 +204,19 @@ const About = () => {
                       <p className="text-emerald-600 font-medium text-sm tracking-wider mb-3">
                         Founder & CEO, Elite Prime Machineries
                       </p>
-                      <p className="text-slate-600 text-sm leading-relaxed max-w-lg">
+                      <p className="text-slate-600 text-sm leading-relaxed max-w-lg mb-3">
                         Former site supervisor who got tired of unreliable rentals. 
                         Built Elite Prime to solve the problem he faced daily — because 
                         downtime isn't just expensive, it's unacceptable.
                       </p>
+                      <div className="space-y-2">
+                        <p className="text-slate-600 text-sm leading-relaxed max-w-lg">
+                          <span className="font-semibold text-slate-800">Education:</span> Bachelor's Degree in Mechanical Engineering
+                        </p>
+                        <p className="text-slate-600 text-sm leading-relaxed max-w-lg">
+                          <span className="font-semibold text-slate-800">Current Role:</span> Active Pipeline Contractor with extensive experience in pipeline construction, installation, and infrastructure development.
+                        </p>
+                      </div>
                     </div>
 
                     <blockquote className="relative pl-5 border-l-2 border-amber-500">

@@ -10,6 +10,13 @@ const Hero = () => {
     });
   };
 
+  const handleProjectsClick = () => {
+    document.getElementById("projects")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -114,10 +121,10 @@ const Hero = () => {
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-4 md:mb-6"
           >
-            Deploy Heavy Assets
+            Pipeline & Heavy
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-400">
-              Without The Overhead
+              Equipment Solutions
             </span>
           </motion.h1>
 
@@ -125,20 +132,20 @@ const Hero = () => {
             variants={itemVariants}
             className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 max-w-2xl mb-6 md:mb-8 lg:mb-10 leading-relaxed"
           >
-            Strategic short-term and long-term equipment solutions for enterprises 
-            scaling operations. Access certified industrial machinery on demand — 
-            optimized for your project lifecycle with zero capital lock-in.
+            Full-service pipeline construction and certified heavy machinery rentals 
+            for industrial, energy, and infrastructure projects. From underground 
+            infrastructure to fleet deployment — we build and equip.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="mb-8 md:mb-0">
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-3 md:gap-4 mb-8 md:mb-0">
             <motion.button
               whileHover={{ scale: 1.02, x: 5 }}
               whileTap={{ scale: 0.98 }}
-              onClick={handleBrowseClick}
-              className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-emerald-700 text-white font-bold text-sm tracking-wider uppercase overflow-hidden rounded-lg"
+              onClick={handleProjectsClick}
+              className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-amber-500 text-slate-900 font-bold text-sm tracking-wider uppercase overflow-hidden rounded-lg"
             >
               <span className="relative z-10 flex items-center gap-2">
-                View Equipment Catalog
+                View Pipeline Projects
                 <svg 
                   className="w-4 h-4 transition-transform group-hover:translate-x-1" 
                   fill="none" 
@@ -149,7 +156,32 @@ const Hero = () => {
                 </svg>
               </span>
               <motion.div
-                className="absolute inset-0 bg-amber-500"
+                className="absolute inset-0 bg-white"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.02, x: 5 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={handleBrowseClick}
+              className="group relative px-6 sm:px-8 py-3 sm:py-4 border border-emerald-500/40 text-white font-bold text-sm tracking-wider uppercase overflow-hidden rounded-lg hover:border-emerald-400"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                Browse Equipment
+                <svg 
+                  className="w-4 h-4 transition-transform group-hover:translate-x-1" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-emerald-700"
                 initial={{ x: "-100%" }}
                 whileHover={{ x: 0 }}
                 transition={{ duration: 0.3 }}
@@ -165,9 +197,9 @@ const Hero = () => {
         >
           <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 max-w-2xl border-t border-emerald-500/20 pt-6 md:pt-8">
             {[
+              { value: "Pipeline", label: "Construction" },
               { value: "750+", label: "Fleet Assets" },
               { value: "Rapid", label: "Deployment" },
-              { value: "Adaptive", label: "Contract Terms" },
             ].map((stat, index) => (
               <motion.div
                 key={index}

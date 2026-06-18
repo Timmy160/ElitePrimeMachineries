@@ -101,7 +101,7 @@ const Contact = () => {
                     Call Us Now
                   </h3>
                   <p className="text-amber-100 text-sm md:text-base leading-relaxed">
-                    +1 (646) 769-1722
+                    +1 (646) 769-1723
                   </p>
                 </div>
                 <div className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-300 flex-shrink-0">

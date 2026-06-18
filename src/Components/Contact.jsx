@@ -137,7 +137,7 @@ const Contact = () => {
               {
                 icon: Phone,
                 label: "Direct Line",
-                value: "+1 (646) 769-1722",
+                value: "+1 (646) 769-1723",
                 subtext: "24/7 emergency support available",
                 color: "emerald",
               },
